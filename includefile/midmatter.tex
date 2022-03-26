@@ -1,0 +1,59 @@
+% !Mode:: "TeX:UTF-8"
+
+%%% 说明: 此部分需要自己填写的内容:  (1) 中文摘要及关键词 (2) 英文摘要及关键词
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% ------------ 中文摘要 ---------------%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{cnabstract}
+    
+阴雨天气所拍图像会产生视觉退化（模糊、遮挡等），这严重影响美观以及后续计算机视觉算法的性能，因此从雨图中恢复干净的背景是图像处理领域热门课题，特别是深度学习兴起以后。在本文中，我们着重于从单张退化图像中去除雨水条纹，即单幅图像去雨，该任务面临如下几个挑战：（1）单幅图像去雨是严重病态的逆问题，需要对背景或雨线添加先验，缩小解空间范围，然而大多数现有深度学习方法很少将真实降雨先验引入网络设计；（2）真实雨图缺少对应的干净背景，因此其去雨结果无法进行定量评估，主要依赖于人类的主观判断；（3）由于获取真实世界中的全标签去雨数据集存在各种挑战（运动，光照变化等），大多数现有方法仅在合成数据上进行训练，因此对真实雨图泛化性较差。本文将针对上述问题给出解决方案，并通过实验验证其有效性和优越性。研究内容与贡献总结如下：
+
+（1）针对“降雨先验”问题，考虑到真实场景中降雨状态的连续性，本文提出一个连续雨强引导的图像去雨网络（CODE-Net）：（i）在传统卷积稀疏编码中引入权重参数，用于调整稀疏表达的稀疏度并同时反映雨强信息；（ii）加权CSC的求解则借助于Deep Unfolding技术，即将传统的迭代过程展开为有限的神经层并端到端训练整个网络。此外，考虑到拍摄距离不同，雨线具有多尺度外观，本文又采用多尺度字典对雨线进行稀疏分解并提出多尺度CODE-Net（mCODE-Net）。相比于现有的深度学习方法，本文所提网络推导于传统的稀疏模型并且整合了连续雨强先验，因此具有更好的可解释性和鲁棒性。
+
+
+（2）针对“结果评估”问题，基于加权卷积稀疏编码模型及其可学习权重，通过分析权重参数与雨强大小的关系，本文提出一个简单有效的雨强估计方法（RDE），RDE可以对输入图像的降雨程度进行连续状态的量化估计，换言之，RDE可以定量反映去雨结果的干净程度。不同于常用的定量评估方法（PSNR、SSIM等），RDE无需标签图像，可直接定量评估去雨效果。
+
+（3）针对“泛化性”问题， 本文在监督模型基础上，将大量真实雨图引入训练过程，提出基于循环一致性的半监督去雨框架，该框架允许网络使用合成数据学习去雨以降低训练难度，同时借助未标记的真实数据来提高泛化性。具体而言，由于真实雨线与合成雨线存在相似性，循环一致性可以在稀疏空间对两种模态数据进行分布对齐，迫使网络学习公共特征，避免网络过于学习合成雨线的特定分布，提高网络在真实场景的泛化性。
+
+（4）实验部分验证了连续雨强估计的有效性，可以隐式地考虑雨强先验和评估无标签图像的去雨结果，而且验证了此模块有助于提升其他去雨算法的去雨性能。而后又将本文算法与当前主流去雨算法进行对比，在大量真实与合成数据上验证了本文算法的有效性和优越性，定量与定性结果均有明显提升。此外，还验证了本文算法有助于其他图像复原和目标检测任务。 
+
+\end{cnabstract}
+%\vspace{1em}\par\vfill
+
+\begin{center}{\songti\zihao{-4}  \par}\end{center}
+
+%%%--------- 关键词 -------- %%%
+%\cnkeywords{\large {\bfseries 夜间人脸识别，正脸化， 人脸识别系统， 深度学习} }
+\noindent\cnkeywords{\large { 单幅图像去雨，卷积稀疏编码，连续雨强估计，循环一致性，半监督学习} }
+%\cnkeywords{ 夜间人脸识别，正脸化， 人脸识别系统， 深度学习 }
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% ------------ 英文摘要 ---------------%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enabstract}
+%This thesis is a study on the theory of \dots.
+%英文摘要，注意用英文逗号
+Rain will result in visual degradations (blur, occlusion, etc.) in captured images, which seriously affects the appearance and the performance of subsequent Computer Vision algorithms. Hence, restoring clean background from rainy image is a hot topic in image processing, especially after the boosting of deep learning. In this thesis, we focus on removing rain streaks from a degraded image, called Single Image DeRaining (SIDR), which faces the following challenges: (1) SIDR is a seriously ill-posed inverse problem, and it is necessary to apply priors to the background or rain streaks to narrow the solution space. However, most existing deep learning methods rarely introduce real rain priors into network design; (2) Real rainy images lack the corresponding clean backgrounds, resulting in the inability to quantitatively evaluate and mainly relying on human subjective judgment; (3) Due to various challenges (motion, lighting change, etc.) in obtaining real-world fully-labeled deraining datasets, most existing methods are only trained on synthetic data and hence, generalize poorly to real-world rainy images. This thesis will present solutions to the above problems and verify their effectiveness and superiority in experiments. The major focus and contributions are as follows:
+
+(1) For `Rain Prior', considering the continuous state of real rainfall, we propose a COntinuous DEnsity-guided Network (CODE-Net) for SIDR by (i) introducing weight parameters, utilized to adjust the sparsity of sparse representations and meanwhile reflect the rain density, into conventional Convolutional Sparse Coding (CSC); (ii) solving the weighted CSC using Deep Unfolding, i.e., unrolling classic iterations into limited neural layers and training the whole network in an end-to-end manner. Besides, we further sparsely encode the rain streaks on multiscale dictionaries and present a multiscale CODE-Net (mCODE-Net), with the consideration of multiscale appearance due to different captured distance. Compared with the existing deep learning methods， our proposed networks, derived from traditional sparsity model and integrating the continuous intensity prior, are with better interpretability and robustness.
+
+(2) For `Evaluation', based on the weighted CSC model and its learnable weights, by analyzing the weights related with rain density, we propose a simple and effective Rain Density Estimation (RDE) method. RDE could quantify the rainfall degree of the input image in a continuous state, in other words, it is able to quantitatively reflect the cleanliness of the deraining results. Different from the commonly quantitative evaluation methods such as PSNR and SSIM, RDE can quantitatively evaluate rain removal performance directly without labeled images.
+
+(3) For `Generalization', based on the supervised model, we propose a cycle-consistent semi-supervised framework attempting to feed unsupervised real rainy images into the network training, which enables the network in learning to derain using synthetic dataset while generalizing better using unlabeled real-world images. Specifically, cycle-consistency conducts the alignment for cross-domain distribution in sparsity space and forces the network to learn common features, which avoids the bias of network towards learning the specific patterns of the synthetic rain and improves the generalization of network in real scenes. 
+
+
+(4) We in experiments first verifies the effectiveness of continuous rain intensity estimation, including implicitly considering density prior, evaluating unlabeled deraining results and improving the performance of other methods. Later, compared with recent state of the arts, experiments on synthetic and real-world data demonstrate the effectiveness and superiority of our methods, in terms of both quantitative and qualitative results. In addition, we validate that our methods can benefit other visual tasks of  image restoration and object detection.
+ 
+\end{enabstract}
+%\vspace{1em}\par\vfill
+
+\begin{center}{\songti\zihao{-4}  \par}\end{center}
+
+%%%------ 英文关键词 ------- %%%
+\noindent\enkeywords{{ single image deraining, convolutional sparse coding, continuous rain density estimation, cycle-consistency, semi-supervised learning}}
+
+

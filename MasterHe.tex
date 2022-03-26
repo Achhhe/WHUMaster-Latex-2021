@@ -1,0 +1,187 @@
+ % !Mode:: "TeX:UTF-8"
+%% 请使用 XeLaTeX 编译本文.
+%% 模板修改时间：2017-04-20, powered by daiao
+%\documentclass[UTF8]{WHUMaster-chapter-center}   
+\documentclass[]{WHUMaster-chapter-center} % 选项 forprint: 交付打印时, 建议加上此选项, 以消除彩色链接文字, 避免彩色字迹打印偏淡.
+                                              % 选项 forlib: 提交给图书馆的电子版, 需要加上选项 forlib, 以消除空白页和彩色链接.
+                                              % 选项 smd: Specialist Master's Degree, 产生专业硕士学位论文封面、页眉.
+%%%=== 参考文献=== %%%
+%\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{makecell}
+\usepackage{booktabs}  
+\usepackage{threeparttable} 
+\usepackage{multirow} 
+%\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}  
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\usepackage{float}
+\usepackage{makecell}
+%\usepackage{subfigure}
+\usepackage[T1]{fontenc} %设置times new roman
+\usepackage{mathptmx}  %设置times new roman
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{epstopdf}
+\usepackage{bm}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+    citecolor=black,
+}
+\usepackage{booktabs} % 用于三线表
+\captionsetup{font={normalsize}}
+\bibliographystyle{gbt7714-2005-wuda-20170408}        % 参考文献样式,  plain,unsrt,alpha,abbrv 等等
+
+%%%  He begin %%%%%%%
+\usepackage{enumerate}
+\usepackage{enumitem} 
+\usepackage{caption}
+\usepackage[justification=centering]{subcaption}
+\usepackage{pifont}
+\newcommand{\True}{\ding{52}}
+\newcommand{\False}{\ding{56}}
+\usepackage[super]{nth}
+\captionsetup{labelsep=space}  %去除冒号
+%%%%% He end    %%%%%%%%%%%%%%%
+%\begin{figure}[!htbp]
+%其中htbp是可选的，它们分别代表
+%!-忽略“美学”标准
+%h-here
+%t-top
+%b-bottom
+%p-page-of-its-own
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%-------------------------------------------------
+\fenleihao{TN911~~~}  % 分类号:《中国图书资料分类法》的类号. 必填. 要根据自己的学科方向填写!!
+\miji{}                % 密级
+\UDC{}               %《国际十进制分类法UDC》的类号. 选填.
+\bianhao{10486~~~}  % 学校编号, 10486是武汉大学的编号. 不用改动.
+
+\title{中文题目}
+\Etitle{English Title} % 英文题目
+\author{小何}
+\StudentNumber{20182021xxxxx}   % 学号
+\Eauthor{{\zihao{4}Achhhe}}            %作者英文名
+\Csupervisor{小明\quad 教授}        %指导教师中文名、职称
+\Esupervisor{Prof.~Ming Xiao}     %指导教师英文名、职称
+\Cmajor{信息与通信工程}                          % 专业中文名[ SMD:专业类别（领域）]
+\Emajor{Information and Communication Engineering }% 专业英文名[ SMD:专业类别（领域）]
+\Cspeciality{图像复原}                     % 研究方向
+\Especiality{Image Restoration}   % 研究方向
+\Schoolname{School of Electronic Information} %学院英文名. 不确定的话, 请看一下自己学院的网页上是怎么写的. 别搞错了!
+\date{二〇二一年五月}                    % 硕士类只写年月. 要注意和英文日期一致!!
+\Edate{May, 2021}                   % 英文封面日期
+
+%-----------------------------------------------------------------------------
+\pdfbookmark[0]{封面}{title}         % 封面页加到 pdf 书签
+\maketitle
+%---------------------r1--------------------------------------------------------
+\input{includefile/frontmatter-word}    % 加入英文封面
+\frontmatter
+\pagenumbering{Roman}               % 正文之前的页码用大写罗马字母编号.
+
+\cleardoublepage
+\newpage  \pagestyle{fancy} \fancyfancy
+%------------------------------------------------------------------------------
+\input{includefile/midmatter-modified.tex}      % 加入中英文摘要.
+%---把目录加入到书签---%%%%%%%%%%%%%%
+\pdfbookmark[0]{目录}{toc}%%%%%%%%%%%%
+
+\tableofcontents
+
+%------------------------------------------------------------------------------
+\mainmatter %% 以下是正文
+\zihao{-4}
+\baselineskip=20pt  % 正文行距为 20 磅
+%\fontsize{12pt}
+%%%%%%%%%%%%%%%%%%%%%r3%%%%%%%%%%%%%%%
+
+
+
+\input{chapter/chp1-intro.tex} %
+
+\input{chapter/chp2-background.tex} %
+
+\input{chapter/chp3-codenet.tex} %
+
+\input{chapter/chp4-semi-codenet.tex} %
+
+\input{chapter/chp5-experiments.tex}%
+
+\input{chapter/chp6-summary-prospect.tex}%
+
+
+
+
+%\section{论文电子版提交的格式问题}
+%
+%《武汉大学博、硕士研究生学位论文缴送办法》要求``电子版应采用~Word97 或~Word2000 格式(DOC)编辑 '\footnote{那已经是~2005 年的事情了.}.
+%关于这个重要的问题, 我已致信武汉大学图书馆总馆信息服务中心袁晓川老师,
+%得到的答复是: ``用~\LaTeX{} 软件排版的论文可直接提交~PDF 格式.''
+
+
+
+
+
+
+%%%=== 参考文献 ========%%%
+\cleardoublepage\phantomsection
+\zihao{5}
+\addcontentsline{toc}{chapter}{参考文献}
+
+\bibliography{BIBbase/WHUMaster-bibtex}%%%加入路径中的参考文献．
+
+\chapter*{攻读硕士期间科研成果}
+\addcontentsline{toc}{chapter}{攻读硕士期间科研成果}
+
+\section*{论文}
+\begin{enumerate}[parsep=1.ex]
+\renewcommand\labelenumi{[\theenumi]}  %% 给数字加上方括号
+\item 
+\textbf{XXX}, xxx, xxx, et al. Title[J]. Signal, Image and Video Processing (SIVP). Springer, 2021: x-x. (SCI, published)
+
+\item 
+\textbf{XXX}, xxx, xxx, et al. Title[J], IEEE Transactions on Multimedia (TMM). 2020. (SCI, published)
+
+\item 
+xxx*, \textbf{XXX}*, xxx, et al. Title[C]//European Conference on Computer Vision (ECCV). Springer, 2020: x-x. (CV Top, co-first author, published)
+
+\item 
+\textbf{XXX}, xxx and xxx. Title[C]//IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2020: x-x. (CCF-B, published)
+
+\item 
+xxx, \textbf{XXX}, xxx, et al. Title[C]//IEEE International Conference on Image Processing (ICIP). IEEE, 2020: x-x. (CCF-B, published)
+
+\end{enumerate}
+
+\section*{专利}
+\begin{enumerate}[parsep=1.ex]
+\renewcommand\labelenumi{[\theenumi]}  %% 给数字加上方括号
+\item
+xxx, \textbf{XXX}, xxx, xxx. Title. CN2019xxx.x[P]. 2019. (已授权, 导师一作)
+
+\item
+xxx, \textbf{XXX}, xxx, xxx. Title. CN2019xxx.x[P]. 2020.  (公开在审, 导师一作)
+
+
+\item
+xxx, xxx, \textbf{XXX}, xxx. Title. CN2020xxx.x[P]. 2020. (公开在审)
+
+\item
+xxx, xxx, \textbf{XXX}, xxx. Title. CN2019xxx.x[P]. 2019. (公开在审)
+
+\end{enumerate}
+
+\backmatter
+\input{includefile/backmatter} %%%致谢, 武汉大学学位论文使用授权协议书．
+\cleardoublepage
+\end{document}
+
+
+
